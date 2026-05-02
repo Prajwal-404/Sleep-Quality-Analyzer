@@ -29,15 +29,281 @@ def load_custom_css():
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     
-    /* Main Background */
+    /* Main Background - Dark Mode (Default) */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #0b1120 0%, #162033 100%);
+    color: #ffffff;
+    }
+
+    p, span, label, div {
+    color: #f8fafc;
+    }
+
+    /* Light Theme Detection and Overrides */
+    /* Streamlit adds .stLightMode class to body when in light theme */
+    body.stLightMode .stApp {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+        color: #1e293b !important;
     }
     
-    /* Hide Streamlit Branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    body.stLightMode p, 
+    body.stLightMode span, 
+    body.stLightMode label, 
+    body.stLightMode div {
+        color: #334155 !important;
+    }
+    
+    /* Hero Section - Light */
+    body.stLightMode .hero-container {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%) !important;
+        border: 1px solid rgba(102, 126, 234, 0.15) !important;
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .hero-subtitle {
+        color: #475569 !important;
+    }
+    
+    body.stLightMode .badge {
+        background: rgba(102, 126, 234, 0.1) !important;
+        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+        color: #475569 !important;
+    }
+    
+    /* Sidebar - Light */
+    body.stLightMode [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+        border-right: 1px solid rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    body.stLightMode [data-testid="stSidebar"] * {
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .section-header {
+        color: #1e293b !important;
+        border-bottom: 2px solid rgba(102, 126, 234, 0.2) !important;
+    }
+    
+    /* Input Labels - Light */
+    body.stLightMode .stSlider label, 
+    body.stLightMode .stSelectbox label, 
+    body.stLightMode .stNumberInput label {
+        color: #475569 !important;
+    }
+    
+    /* Select Boxes - Light */
+    body.stLightMode .stSelectbox [data-baseweb="select"] {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(102, 126, 234, 0.3) !important;
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .stSelectbox [data-baseweb="select"] span {
+        color: #1e293b !important;
+    }
+    
+    /* Dropdown menu - Light */
+    body.stLightMode [data-baseweb="popover"] {
+        background: #ffffff !important;
+        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+    }
+    
+    body.stLightMode [data-baseweb="menu"] li {
+        color: #1e293b !important;
+        background: #ffffff !important;
+    }
+    
+    body.stLightMode [data-baseweb="menu"] li:hover {
+        background: rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    /* Cards - Light */
+    body.stLightMode .score-card, 
+    body.stLightMode .insight-card, 
+    body.stLightMode .recommendation-card {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(102, 126, 234, 0.15) !important;
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .insight-label, 
+    body.stLightMode .score-label {
+        color: #64748b !important;
+    }
+    
+    body.stLightMode .insight-value, 
+    body.stLightMode .recommendation-title {
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .recommendation-text {
+        color: #475569 !important;
+    }
+    
+    /* Status Badges - Light */
+    body.stLightMode .status-excellent {
+        background: rgba(16, 185, 129, 0.15) !important;
+        color: #065f46 !important;
+    }
+    
+    body.stLightMode .status-good {
+        background: rgba(6, 182, 212, 0.15) !important;
+        color: #0e7490 !important;
+    }
+    
+    body.stLightMode .status-moderate {
+        background: rgba(245, 158, 11, 0.15) !important;
+        color: #92400e !important;
+    }
+    
+    body.stLightMode .status-poor {
+        background: rgba(239, 68, 68, 0.15) !important;
+        color: #991b1b !important;
+    }
+    
+    /* Footer - Light */
+    body.stLightMode .footer {
+        color: #64748b !important;
+        border-top: 1px solid rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    /* Alert Boxes - Light */
+    body.stLightMode .stAlert, 
+    body.stLightMode .stSuccess, 
+    body.stLightMode .stWarning, 
+    body.stLightMode .stError {
+        color: #334155 !important;
+    }
+    
+    body.stLightMode .stAlert {
+        background: rgba(6, 182, 212, 0.08) !important;
+        border: 1px solid rgba(6, 182, 212, 0.2) !important;
+    }
+    
+    body.stLightMode .stSuccess {
+        background: rgba(16, 185, 129, 0.08) !important;
+        border: 1px solid rgba(16, 185, 129, 0.2) !important;
+    }
+    
+    body.stLightMode .stWarning {
+        background: rgba(245, 158, 11, 0.08) !important;
+        border: 1px solid rgba(245, 158, 11, 0.2) !important;
+    }
+    
+    body.stLightMode .stError {
+        background: rgba(239, 68, 68, 0.08) !important;
+        border: 1px solid rgba(239, 68, 68, 0.2) !important;
+    }
+    
+    /* Inputs - Light */
+    body.stLightMode input, 
+    body.stLightMode textarea, 
+    body.stLightMode select {
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .stNumberInput input {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+        color: #1e293b !important;
+    }
+    
+    /* Expander - Light */
+    body.stLightMode .streamlit-expanderHeader {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(102, 126, 234, 0.15) !important;
+        color: #1e293b !important;
+    }
+    
+    body.stLightMode .streamlit-expanderContent {
+        background: rgba(255, 255, 255, 0.7) !important;
+        border: 1px solid rgba(102, 126, 234, 0.1) !important;
+        color: #475569 !important;
+    }
+    
+    /* Markdown - Light */
+    body.stLightMode .stMarkdown p, 
+    body.stLightMode .stMarkdown li, 
+    body.stLightMode .stMarkdown span {
+        color: #334155 !important;
+    }
+    
+    /* Tooltip - Light */
+    body.stLightMode [data-baseweb="tooltip"] {
+        background: #ffffff !important;
+        color: #1e293b !important;
+        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+    }
+    
+    /* Hero title gradient still works in light mode */
+    body.stLightMode .hero-title {
+        background: linear-gradient(135deg, #667eea 0%, #f093fb 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+    
+    /* Score value gradient still works in light mode */
+    body.stLightMode .score-value {
+        background: linear-gradient(135deg, #667eea 0%, #f093fb 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+    
+    /* Metric value color in light mode */
+    body.stLightMode [data-testid="stMetricValue"] {
+        color: #667eea !important;
+    }
+    
+    /* Metric label color in light mode */
+    body.stLightMode [data-testid="stMetricLabel"] {
+        color: #64748b !important;
+    }
+    
+    /* Progress bar in light mode */
+    body.stLightMode .stProgress > div > div > div {
+        background: linear-gradient(to right, #667eea, #764ba2) !important;
+    }
+    
+    /* Button in light mode */
+    body.stLightMode .stButton > button {
+        background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%) !important;
+        color: white !important;
+    }
+    
+    /* Slider in light mode */
+    body.stLightMode .stSlider [data-baseweb="slider"] {
+        background: linear-gradient(to right, #667eea, #764ba2) !important;
+    }
+    
+    /* Divider in light mode */
+    body.stLightMode hr {
+        background: linear-gradient(to right, transparent, rgba(102, 126, 234, 0.2), transparent) !important;
+    }
+    
+    /* Header styling in light mode */
+    body.stLightMode header[data-testid="stHeader"] {
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px) !important;
+        border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    /* Sidebar toggle button in light mode */
+    body.stLightMode [data-testid="collapsedControl"] {
+        color: #1e293b !important;
+        background: rgba(102, 126, 234, 0.1) !important;
+        border: 1px solid rgba(102, 126, 234, 0.2) !important;
+    }
+    
+    body.stLightMode [data-testid="collapsedControl"]:hover {
+        background: rgba(102, 126, 234, 0.2) !important;
+        border-color: rgba(102, 126, 234, 0.3) !important;
+    }
+    
+    /* Keep Streamlit controls visible but styled */
+    #MainMenu {visibility: visible;}
+    footer {visibility: visible;}
+    header {visibility: visible;}
     
     /* Hero Section */
     .hero-container {
@@ -74,7 +340,8 @@ def load_custom_css():
     
     .hero-subtitle {
         font-size: 1.25rem;
-        color: #cbd5e1;
+        color: #e2e8f0;
+        font-weight: 500;
         margin-bottom: 1.5rem;
     }
     
@@ -90,12 +357,12 @@ def load_custom_css():
         align-items: center;
         gap: 0.5rem;
         padding: 0.5rem 1.5rem;
-        background: rgba(102, 126, 234, 0.1);
-        border: 1px solid rgba(102, 126, 234, 0.3);
+        background: rgba(102, 126, 234, 0.15);
+        border: 1px solid rgba(102, 126, 234, 0.4);
         border-radius: 50px;
         font-size: 0.875rem;
         font-weight: 500;
-        color: #cbd5e1;
+        color: #e2e8f0;
     }
     
     /* Sidebar Styling */
@@ -104,6 +371,10 @@ def load_custom_css():
         border-right: 1px solid rgba(102, 126, 234, 0.2);
     }
     
+    [data-testid="stSidebar"] * {
+    color: #ffffff !important;
+    }
+
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3 {
@@ -127,9 +398,9 @@ def load_custom_css():
         font-size: 1.5rem;
     }
     
-    /* Input Labels */
+    /* Input Labels - Improved contrast */
     .stSlider label, .stSelectbox label, .stNumberInput label {
-        color: #cbd5e1 !important;
+        color: #e2e8f0 !important;
         font-weight: 600 !important;
         font-size: 0.875rem !important;
         text-transform: uppercase;
@@ -141,17 +412,43 @@ def load_custom_css():
         background: linear-gradient(to right, #667eea, #764ba2);
     }
     
-    /* Select Boxes */
+    /* Select Boxes - Fixed for visibility */
     .stSelectbox [data-baseweb="select"] {
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(102, 126, 234, 0.3);
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(102, 126, 234, 0.5);
         border-radius: 12px;
+        color: #ffffff !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] span {
+        color: #ffffff !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"]:hover {
+        border-color: rgba(102, 126, 234, 0.8);
+        background: rgba(15, 23, 42, 0.9);
+    }
+    
+    /* Dropdown menu styling */
+    [data-baseweb="popover"] {
+        background: #1e293b !important;
+        border: 1px solid rgba(102, 126, 234, 0.5) !important;
+        border-radius: 12px !important;
+    }
+    
+    [data-baseweb="menu"] li {
+        color: #ffffff !important;
+        background: #1e293b !important;
+    }
+    
+    [data-baseweb="menu"] li:hover {
+        background: rgba(102, 126, 234, 0.2) !important;
     }
     
     /* Buttons */
     .stButton > button {
         width: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
         color: white;
         font-weight: 700;
         font-size: 1.125rem;
@@ -179,7 +476,7 @@ def load_custom_css():
     [data-testid="stMetricLabel"] {
         font-size: 0.875rem;
         font-weight: 600;
-        color: #94a3b8;
+        color: #cbd5e1;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
@@ -208,7 +505,7 @@ def load_custom_css():
     
     .score-label {
         font-size: 1rem;
-        color: #94a3b8;
+        color: #cbd5e1;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         margin-bottom: 1rem;
@@ -216,7 +513,7 @@ def load_custom_css():
     
     .score-description {
         font-size: 1.125rem;
-        color: #cbd5e1;
+        color: #ffffff;
         line-height: 1.6;
     }
     
@@ -280,7 +577,7 @@ def load_custom_css():
     
     .insight-label {
         font-size: 0.875rem;
-        color: #94a3b8;
+        color: #e2e8f0;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         margin-bottom: 0.5rem;
@@ -327,7 +624,7 @@ def load_custom_css():
     
     .recommendation-text {
         font-size: 0.875rem;
-        color: #cbd5e1;
+        color: #e2e8f0;
         line-height: 1.6;
         margin-left: 2.5rem;
     }
@@ -352,7 +649,7 @@ def load_custom_css():
         padding: 2rem 0;
         margin-top: 4rem;
         border-top: 1px solid rgba(102, 126, 234, 0.2);
-        color: #94a3b8;
+        color: #cbd5e1;
         font-size: 0.875rem;
     }
     
@@ -369,7 +666,7 @@ def load_custom_css():
         background: rgba(6, 182, 212, 0.1);
         border: 1px solid rgba(6, 182, 212, 0.3);
         border-radius: 12px;
-        color: #cbd5e1;
+        color: #e2e8f0;
     }
     
     /* Success Box */
@@ -377,7 +674,7 @@ def load_custom_css():
         background: rgba(16, 185, 129, 0.1);
         border: 1px solid rgba(16, 185, 129, 0.3);
         border-radius: 12px;
-        color: #cbd5e1;
+        color: #e2e8f0;
     }
     
     /* Warning Box */
@@ -385,7 +682,7 @@ def load_custom_css():
         background: rgba(245, 158, 11, 0.1);
         border: 1px solid rgba(245, 158, 11, 0.3);
         border-radius: 12px;
-        color: #cbd5e1;
+        color: #e2e8f0;
     }
     
     /* Error Box */
@@ -393,9 +690,140 @@ def load_custom_css():
         background: rgba(239, 68, 68, 0.1);
         border: 1px solid rgba(239, 68, 68, 0.3);
         border-radius: 12px;
-        color: #cbd5e1;
+        color: #e2e8f0;
     }
+
+    /* Ensure all text inputs are visible */
+    input, textarea, select {
+        color: #ffffff !important;
+    }
+
+    /* Streamlit header styling */
+    header[data-testid="stHeader"] {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+    }
+
+    /* Sidebar toggle button styling */
+    [data-testid="collapsedControl"] {
+        color: #ffffff !important;
+        background: rgba(102, 126, 234, 0.2) !important;
+        border: 1px solid rgba(102, 126, 234, 0.3) !important;
+    }
+
+    [data-testid="collapsedControl"]:hover {
+        background: rgba(102, 126, 234, 0.3) !important;
+        border-color: rgba(102, 126, 234, 0.5) !important;
+    }
+
+    /* Expander content */
+    .streamlit-expanderContent {
+        background: rgba(30, 41, 59, 0.3);
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        border-radius: 0 0 12px 12px;
+        padding: 1rem;
+        color: #e2e8f0;
+    }
+
+    /* Markdown text contrast */
+    .stMarkdown p, .stMarkdown li, .stMarkdown span {
+        color: #e2e8f0 !important;
+    }
+
+    /* Number input styling */
+    .stNumberInput input {
+        background: rgba(15, 23, 42, 0.8) !important;
+        border: 1px solid rgba(102, 126, 234, 0.3) !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+    }
+
+    /* Slider value display */
+    .stSlider [data-baseweb="slider"] [role="slider"] {
+        color: #ffffff !important;
+    }
+
+    /* Tooltip styling */
+    [data-baseweb="tooltip"] {
+        background: #1e293b !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(102, 126, 234, 0.3) !important;
+        border-radius: 8px !important;
+    }
+
     </style>
+    
+    <script>
+    // Detect Streamlit theme and apply appropriate styling
+    function detectAndApplyTheme() {
+        // Check if Streamlit is in light mode by looking at body classes
+        const isLightMode = document.body.classList.contains('stLightMode') || 
+                           document.documentElement.style.getPropertyValue('--st-background-color')?.includes('255');
+        
+        if (isLightMode) {
+            // Add light theme class to body
+            document.body.classList.add('light-theme');
+            
+            // Override specific elements for light theme
+            const style = document.createElement('style');
+            style.textContent = `
+                /* Manual light theme overrides */
+                body.light-theme .stApp {
+                    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+                    color: #1e293b !important;
+                }
+                
+                body.light-theme .hero-container {
+                    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%) !important;
+                    border: 1px solid rgba(102, 126, 234, 0.15) !important;
+                }
+                
+                body.light-theme .hero-subtitle,
+                body.light-theme .badge,
+                body.light-theme .insight-label,
+                body.light-theme .score-label,
+                body.light-theme .footer {
+                    color: #475569 !important;
+                }
+                
+                body.light-theme [data-testid="stSidebar"] {
+                    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+                }
+                
+                body.light-theme .stSelectbox [data-baseweb="select"],
+                body.light-theme .stNumberInput input {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                    color: #1e293b !important;
+                }
+                
+                body.light-theme .score-card,
+                body.light-theme .insight-card,
+                body.light-theme .recommendation-card {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                }
+                
+                body.light-theme .insight-value,
+                body.light-theme .recommendation-title,
+                body.light-theme .score-description {
+                    color: #1e293b !important;
+                }
+                
+                body.light-theme .recommendation-text {
+                    color: #475569 !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+    
+    // Run detection after page loads
+    window.addEventListener('load', detectAndApplyTheme);
+    
+    // Also check periodically as Streamlit might load theme later
+    setTimeout(detectAndApplyTheme, 1000);
+    setTimeout(detectAndApplyTheme, 3000);
+    </script>
     """, unsafe_allow_html=True)
 
 # ===================================
@@ -556,10 +984,10 @@ def main():
         
         # Sleep Habits
         st.markdown('<div class="section-header"><span class="section-icon">🌙</span> Sleep Habits</div>', unsafe_allow_html=True)
-        sleep_duration = st.slider("Sleep Duration (hours)", 4.0, 12.0, 7.0, 0.1, help="Average hours of sleep per night")
+        sleep_duration = st.slider("Sleep Duration (hours)", 4.0, 12.0, 7.0, 0.5, help="Average hours of sleep per night")
         bedtime_consistency = st.slider("Bedtime Consistency", 1, 7, 5, help="1 = Very inconsistent, 7 = Very consistent")
         wakeup_consistency = st.slider("Wakeup Consistency", 1, 7, 5, help="1 = Very inconsistent, 7 = Very consistent")
-        weekend_sleep_debt = st.slider("Weekend Sleep Debt (hours)", 0.0, 5.0, 1.0, 0.1, help="Extra sleep needed on weekends")
+        weekend_sleep_debt = st.slider("Weekend Sleep Debt (hours)", 0.0, 5.0, 1.0, 0.5, help="Extra sleep needed on weekends")
         
         st.markdown("---")
         
@@ -567,9 +995,9 @@ def main():
         st.markdown('<div class="section-header"><span class="section-icon">💪</span> Lifestyle Factors</div>', unsafe_allow_html=True)
         physical_activity = st.slider("Physical Activity (min/day)", 0, 120, 60, help="Minutes of exercise per day")
         stress_level = st.slider("Stress Level", 1, 10, 5, help="1 = Very low, 10 = Very high")
-        screen_time = st.slider("Screen Time Before Bed (hours)", 0.0, 5.0, 1.0, 0.1, help="Hours of screen time before sleep")
+        screen_time = st.slider("Screen Time Before Bed (hours)", 0.0, 5.0, 1.0, 0.5, help="Hours of screen time before sleep")
         caffeine = st.slider("Caffeine Cups Per Day", 0, 10, 2, help="Number of caffeinated drinks")
-        water_intake = st.slider("Water Intake (liters/day)", 0.0, 5.0, 2.0, 0.1, help="Daily water consumption")
+        water_intake = st.slider("Water Intake (liters/day)", 0.0, 5.0, 2.0, 0.5, help="Daily water consumption")
         
         st.markdown("---")
         
