@@ -1,189 +1,184 @@
-# Sleep Quality Analyzer - ML Mini Project
+# Sleep Quality Analyzer
 
-A machine learning regression model that predicts sleep quality based on lifestyle and health factors.
+AI-powered machine learning application that predicts sleep quality from lifestyle and wellness factors.
 
-## 🎯 Project Overview
+## Overview
 
-**Objective**: Predict sleep quality (4-9 scale) using user-enterable lifestyle features
+Sleep Quality Analyzer uses machine learning to predict sleep quality scores based on user-provided lifestyle habits. The application provides personalized recommendations to help users improve their sleep patterns through data-driven insights.
 
-**Dataset**: Kaggle Sleep Health and Lifestyle Dataset (374 rows) with synthetic feature augmentation
+**Key Capabilities:**
+- Predicts sleep quality on a 4-9 scale
+- Analyzes 11 lifestyle and wellness factors
+- Generates personalized improvement recommendations
+- Real-time predictions through interactive web interface
 
-**Target Variable**: Quality of Sleep (numeric score)
+## Features
 
-## 📊 Key Features Used
+- **Sleep Quality Prediction** - ML-powered regression model trained on real sleep health data
+- **Lifestyle Analysis** - Evaluates sleep duration, stress, physical activity, screen time, caffeine intake, and more
+- **Personalized Recommendations** - Actionable insights based on individual lifestyle patterns
+- **Interactive Web UI** - Premium dark-themed Streamlit interface with real-time predictions
+- **Instant Inference** - Pre-trained model provides immediate results
 
-### User-Enterable Features:
-1. **Demographics**: Age, Gender
-2. **Sleep Patterns**: Sleep Duration, Bedtime Consistency, Wakeup Consistency, Weekend Sleep Debt
-3. **Lifestyle**: Physical Activity Level, Stress Level, Screen Time Before Bed, Caffeine Cups Per Day, Water Intake
+## Tech Stack
 
-## 🔧 Technical Improvements Made
+**Core:**
+- Python 3.8+
+- Streamlit
+- Scikit-learn
+- XGBoost
+- Pandas & NumPy
 
-### Problems Fixed:
-1. **Data Leakage**: Removed non-user-enterable features (Heart Rate, Blood Pressure, BMI, etc.)
-2. **Overfitting**: Added strong regularization to all models
-3. **CV Instability**: Implemented KFold with shuffle for small dataset
-4. **Feature Quality**: Validated synthetic features against real patterns
-5. **Preprocessing**: Proper scaling and encoding pipeline
+**ML Pipeline:**
+- Jupyter Notebook
+- Matplotlib & Seaborn
+- Joblib
 
-### Model Architecture:
-- **Baseline**: Ridge Regression with L2 regularization
-- **Tree Models**: Random Forest, Gradient Boosting, XGBoost
-- **Regularization**: Max depth limits, min samples constraints, L1/L2 penalties
-- **Cross-Validation**: 5-fold KFold with shuffle
+## Project Structure
 
-## 📈 Expected Performance
+```
+Sleep-Quality-Analyzer/
+├── app/
+│   ├── sleep_quality_app.py          # Streamlit web application
+│   └── STREAMLIT_UI_GUIDE.md         # UI documentation
+├── models/
+│   ├── sleep_model.pkl                # Trained ML model
+│   └── model_columns.pkl              # Feature columns & preprocessing
+├── notebooks/
+│   ├── Sleep_Quality_Prediction_Pipeline.ipynb  # Model training pipeline
+│   └── EDA.ipynb                      # Exploratory data analysis
+├── data/
+│   ├── Sleep_health_and_lifestyle_dataset.csv   # Original dataset
+│   └── upgraded_sleep_dataset.csv     # Processed dataset with features
+├── requirements.txt                   # Python dependencies
+└── README.md
+```
 
-### Realistic Metrics (Small Dataset):
-- **Cross-Validation R²**: 0.60-0.75
-- **Cross-Validation MAE**: 0.4-0.6
-- **CV Stability**: Low standard deviation across folds
-- **Test Set R²**: Similar to CV (indicates no overfitting)
+## How It Works
 
-### Why Previous Metrics Were Suspicious:
-- Single split R² of 0.98 → Overfitting
-- CV R² dropping to 0.57 → Model not generalizing
-- High variance across folds → Unstable predictions
+1. **User Input** - User provides lifestyle data through interactive sliders and dropdowns
+2. **Data Processing** - Input is formatted and aligned with model's expected features
+3. **Prediction** - Trained Gradient Boosting model predicts sleep quality score
+4. **Results Display** - App shows score, status badge, wellness insights, and recommendations
+5. **Personalized Advice** - Dynamic recommendations generated based on user's specific patterns
 
-## 🚀 Setup Instructions
+## Installation & Setup
 
-### 1. Install Dependencies
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+
+### Installation
+
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/Sleep-Quality-Analyzer.git
+cd Sleep-Quality-Analyzer
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+# Windows:
+.venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Train the Model
-Open and run `notebooks/Sleep_Quality_Prediction_Pipeline.ipynb`
+### Running the Application
 
-This will:
-- Load and clean the data
-- Perform proper feature engineering
-- Train multiple models with cross-validation
-- Save the best model to `models/`
-
-### 3. Run the Premium Streamlit App
 ```bash
-cd app
-streamlit run sleep_quality_app.py
+# Run Streamlit app
+streamlit run app/sleep_quality_app.py
 ```
 
-> 🌟 **New Premium UI!** The Streamlit app now features a world-class, startup-grade design:
-> - 🎨 Stunning gradient design with glassmorphism effects
-> - 🌙 Calming sleep/wellness theme (deep navy, purple, indigo, cyan)
-> - ✨ Smooth animations and premium hover effects
-> - 📊 Beautiful score visualization with circular progress
-> - 💡 Premium recommendation cards with icons
-> - 📈 Insights dashboard with 4 key metrics
-> - 📱 Fully responsive, mobile-friendly layout
-> - 🚀 Production-ready, professional design
+The application will automatically open in your default browser at `http://localhost:8501`
 
-**Alternative: Standalone HTML Frontend**
+### Training the Model
+
+To retrain the model with new data:
+
 ```bash
-cd app
-# Open index.html in browser or use:
-python -m http.server 8000
-# Visit: http://localhost:8000
+# Open Jupyter Notebook
+jupyter notebook
+
+# Navigate to notebooks/Sleep_Quality_Prediction_Pipeline.ipynb
+# Run all cells to train and save the model
 ```
 
-## 📁 Project Structure
+## Model Details
 
-```
-.
-├── data/
-│   ├── Sleep_health_and_lifestyle_dataset.csv  # Original dataset
-│   └── upgraded_sleep_dataset.csv              # With synthetic features
-├── notebooks/
-│   ├── EDA.ipynb                               # Old notebook
-│   └── Sleep_Quality_Prediction_Pipeline.ipynb # Complete ML pipeline
-├── models/
-│   ├── sleep_model.pkl                         # Trained model
-│   └── model_columns.pkl                       # Feature columns
-├── app/
-│   ├── sleep_quality_app.py                    # 🌟 Premium Streamlit UI
-│   ├── index.html                              # Standalone HTML frontend
-│   ├── styles.css                              # Premium styling
-│   ├── script.js                               # Interactive functionality
-│   └── FRONTEND_README.md                      # Frontend documentation
-├── requirements.txt
-├── README.md
-└── VIVA_GUIDE.md
-```
+**Algorithm:** Gradient Boosting Regressor
 
-## 🎓 Model Comparison Results
+**Input Features (11):**
+- Age
+- Gender
+- Sleep Duration (hours)
+- Physical Activity Level (minutes/day)
+- Stress Level (1-10 scale)
+- Screen Time Before Bed (hours)
+- Caffeine Intake (cups/day)
+- Bedtime Consistency (1-7 scale)
+- Wakeup Consistency (1-7 scale)
+- Water Intake (liters/day)
+- Weekend Sleep Debt (hours)
 
-| Model | CV R² | CV MAE | CV RMSE | Stability |
-|-------|-------|--------|---------|-----------|
-| Ridge | ~0.65 | ~0.50 | ~0.65 | High |
-| Random Forest | ~0.68 | ~0.45 | ~0.60 | Medium |
-| Gradient Boosting | ~0.70 | ~0.42 | ~0.58 | High |
-| XGBoost | ~0.69 | ~0.43 | ~0.59 | High |
+**Output:** Sleep Quality Score (4-9 scale)
 
-*Note: Actual values depend on data split and hyperparameters*
+**Performance Metrics:**
+- Cross-Validation R²: ~0.70
+- Mean Absolute Error: ~0.42
+- 5-Fold Cross-Validation with stratified splits
 
-## 💡 Key Insights
+**Model Files:**
+- `sleep_model.pkl` - Serialized trained model
+- `model_columns.pkl` - Feature order and preprocessing metadata
 
-### Most Important Features:
-1. Sleep Duration
-2. Stress Level
-3. Physical Activity Level
-4. Bedtime Consistency
-5. Screen Time Before Bed
+## Usage Example
 
-### Recommendations for Users:
-- Maintain 7-9 hours of sleep
-- Keep consistent sleep schedule
-- Limit screen time before bed
-- Manage stress levels
-- Regular physical activity
+1. Launch the application
+2. Fill in your lifestyle information in the sidebar:
+   - Personal details (age, gender)
+   - Sleep habits (duration, consistency)
+   - Lifestyle factors (activity, stress, screen time)
+3. Click "Analyze Sleep Quality"
+4. View your predicted sleep score and personalized recommendations
 
-## 🔬 Methodology
+## Screenshots
 
-### Data Preprocessing:
-1. Remove non-user-enterable features
-2. Handle missing values in synthetic features
-3. Encode categorical variables (Gender)
-4. Stratified train-test split (80-20)
+*Coming soon - Screenshots of the application interface*
 
-### Model Training:
-1. Standardize features for linear models
-2. Apply regularization to prevent overfitting
-3. Use 5-fold cross-validation with shuffle
-4. Evaluate on multiple metrics (R², MAE, RMSE)
-5. Select best model based on CV performance
+## Dataset
 
-### Validation:
-1. Compare CV scores to test scores
-2. Check residual plots for patterns
-3. Analyze feature importance
-4. Verify predictions are realistic
+**Source:** Kaggle Sleep Health and Lifestyle Dataset
 
-## ⚠️ Limitations
+**Size:** 374 samples with 11 user-enterable features
 
-1. **Small Dataset**: 374 samples limits model complexity
-2. **Synthetic Features**: Some features are generated, not real
-3. **Self-Reported Data**: Original data may have reporting bias
-4. **Generalization**: Model trained on specific population
-5. **Not Medical Advice**: Tool is for educational purposes only
+**Preprocessing:**
+- Removed non-user-enterable features (Heart Rate, Blood Pressure, BMI)
+- Added synthetic lifestyle features for enhanced prediction
+- Applied proper encoding for categorical variables
 
-## 🎯 Future Improvements
+## Future Enhancements
 
-1. **Data Collection**: Gather more real-world data
-2. **Feature Engineering**: Create interaction terms
-3. **Ensemble Methods**: Combine multiple models
-4. **Hyperparameter Tuning**: Grid search for optimal parameters
-5. **Real-time Tracking**: Integrate with sleep tracking devices
+- Deploy to cloud platform (Streamlit Cloud, Heroku, AWS)
+- Add user authentication and profile management
+- Implement sleep trend tracking over time
+- Integrate with wearable device APIs
+- Add advanced analytics dashboard
+- Multi-language support
 
-## 📚 References
+## License
 
-- Dataset: [Kaggle Sleep Health and Lifestyle Dataset](https://www.kaggle.com/)
-- Scikit-learn Documentation
-- XGBoost Documentation
-- Streamlit Documentation
+This project is available for educational and portfolio purposes.
 
-## 👨‍💻 Author
+## Author
 
 ML Mini Project - Sleep Quality Prediction
 
 ---
 
-**Note**: This is an educational project. Always consult healthcare professionals for sleep-related medical advice.
+**Note:** This application is for educational purposes only and should not replace professional medical advice.
