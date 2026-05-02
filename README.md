@@ -61,10 +61,28 @@ This will:
 - Train multiple models with cross-validation
 - Save the best model to `models/`
 
-### 3. Run the Streamlit App
+### 3. Run the Premium Streamlit App
 ```bash
 cd app
 streamlit run sleep_quality_app.py
+```
+
+> 🌟 **New Premium UI!** The Streamlit app now features a world-class, startup-grade design:
+> - 🎨 Stunning gradient design with glassmorphism effects
+> - 🌙 Calming sleep/wellness theme (deep navy, purple, indigo, cyan)
+> - ✨ Smooth animations and premium hover effects
+> - 📊 Beautiful score visualization with circular progress
+> - 💡 Premium recommendation cards with icons
+> - 📈 Insights dashboard with 4 key metrics
+> - 📱 Fully responsive, mobile-friendly layout
+> - 🚀 Production-ready, professional design
+
+**Alternative: Standalone HTML Frontend**
+```bash
+cd app
+# Open index.html in browser or use:
+python -m http.server 8000
+# Visit: http://localhost:8000
 ```
 
 ## 📁 Project Structure
@@ -76,12 +94,16 @@ streamlit run sleep_quality_app.py
 │   └── upgraded_sleep_dataset.csv              # With synthetic features
 ├── notebooks/
 │   ├── EDA.ipynb                               # Old notebook
-│   └── Sleep_Quality_Prediction_Pipeline.ipynb # NEW: Complete pipeline
+│   └── Sleep_Quality_Prediction_Pipeline.ipynb # Complete ML pipeline
 ├── models/
 │   ├── sleep_model.pkl                         # Trained model
 │   └── model_columns.pkl                       # Feature columns
 ├── app/
-│   └── sleep_quality_app.py                    # Streamlit deployment
+│   ├── sleep_quality_app.py                    # 🌟 Premium Streamlit UI
+│   ├── index.html                              # Standalone HTML frontend
+│   ├── styles.css                              # Premium styling
+│   ├── script.js                               # Interactive functionality
+│   └── FRONTEND_README.md                      # Frontend documentation
 ├── requirements.txt
 ├── README.md
 └── VIVA_GUIDE.md
